@@ -1,14 +1,14 @@
 const pool = require('./pool');
 
-const addUser = async (firstName, lastName, userName, password) => {    
+const addUser = async (firstName, lastName, username, password) => {    
     const { rows } = await pool.query(`
-        INSERT INTO users (first_name, last_name, user_name, password)
+        INSERT INTO users (first_name, last_name, username, password)
         VALUES ($1, $2, $3, $4)
         RETURNING * ;`,
-        [firstName, lastName, userName, password]
+        [firstName, lastName, username, password]
     );
 
-    console.log(`${rows[0].user_name} added to database`);
+    console.log(`${rows[0].username} added to database`);
 };
 
 module.exports = { addUser };

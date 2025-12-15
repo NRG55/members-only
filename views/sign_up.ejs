@@ -7,17 +7,58 @@
 </head>
 <body>
     <main>
+        <%- include('./partials/validationErrors') %>
         <form action="/sign-up" method="POST">
-            <label for="firstname">First Name</label>
-            <input type="text" name="firstName" id="firstName" minlength="1" maxlength="32" required>
-            <label for="lastname">Last Name</label>
-            <input type="text" name="lastName" id="lastName" minlength="1" maxlength="32" required>
+            <label for="firstName">First Name</label>
+            <input 
+                type="text" 
+                name="firstName" 
+                id="firstName"
+                value="<%= data ? data.firstName : '' %>" 
+                minlength="1" 
+                maxlength="32" 
+                required
+            >
+            <label for="lastName">Last Name</label>
+            <input 
+                type="text" 
+                name="lastName" 
+                id="lastName"
+                value="<%= data ? data.lastName : '' %>" 
+                minlength="1" 
+                maxlength="32" 
+                required
+            >
             <label for="username">Username</label>
-            <input type="text" name="userName" id="userName" minlength="1" maxlength="32" required>
+            <input 
+                type="text" 
+                name="username" 
+                id="username"
+                value="<%= data ? data.username : '' %>" 
+                minlength="1" 
+                maxlength="32" 
+                required
+            >
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" minlength="6" maxlength="32" required>
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" name="confirmPassword" id="confirmPassword" minlength="6" maxlength="32" required>
+            <input 
+                type="password" 
+                name="password" 
+                id="password"
+                value="<%= data ? data.password : '' %>" 
+                minlength="5" 
+                maxlength="16" 
+                required
+            >
+            <label for="passwordConfirmation">Confirm Password</label>
+            <input 
+                type="password" 
+                name="passwordConfirmation" 
+                id="passwordConfirmation"
+                value="<%= data ? data.passwordConfirmation : '' %>" 
+                minlength="5" 
+                maxlength="16" 
+                required
+            >
             <button type="submit">Submit</button>
         </form>
     </main>    

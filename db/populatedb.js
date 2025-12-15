@@ -6,7 +6,7 @@ const createUsersTable = `
         id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         first_name VARCHAR (32),
         last_name VARCHAR (32),
-        user_name VARCHAR (32),
+        username VARCHAR (32),
         password VARCHAR (64),
         is_member BOOLEAN DEFAULT false    
     );
