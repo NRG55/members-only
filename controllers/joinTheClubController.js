@@ -1,5 +1,5 @@
 const { assignMembershipToUser } = require('../db/queries');
-const { validateJoinTheClub } = require('../validators/validateJoinTheClub');
+const { validateJoinTheClub } = require('../middlewares/validators/validateJoinTheClub');
 const { validationResult } = require('express-validator');
 
 const joinTheClubGet = (req, res) => {

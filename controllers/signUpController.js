@@ -1,7 +1,7 @@
 const { addUser } = require('../db/queries');
 const bcrypt = require('bcryptjs');
-const { validateSignUp } = require('../validators/validateSignUp');
-const { validationResult, matchedData } = require("express-validator");
+const { validateSignUp } = require('../middlewares/validators/validateSignUp');
+const { validationResult, matchedData } = require('express-validator');
 
 const signUpGet = (req, res) => {
     res.render('forms/sign_up', { data: {} });
