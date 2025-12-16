@@ -4,7 +4,7 @@ const { validateSignUp } = require('../validators/validateSignUp');
 const { validationResult, matchedData } = require("express-validator");
 
 const signUpGet = (req, res) => {
-    res.render('sign_up', { data: {} });
+    res.render('forms/sign_up', { data: {} });
 };
 
 const signUpPost = [
@@ -15,7 +15,7 @@ const signUpPost = [
         if (!errors.isEmpty()) {
             return res
                 .status(400)
-                .render('sign_up', 
+                .render('forms/sign_up', 
                     {
                         errors: errors.array(),
                         data: req.body

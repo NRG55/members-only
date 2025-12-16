@@ -8,7 +8,22 @@ const addUser = async (firstName, lastName, username, password) => {
         [firstName, lastName, username, password]
     );
 
-    console.log(`${rows[0].username} added to database`);
+    console.log(`DATABASE: User ${rows[0].username} added`);
 };
 
-module.exports = { addUser };
+const assignMembershipToUser = async (userId) => {    
+    const { rows } = await pool.query(`
+        UPDATE users
+        SET is_member = TRUE
+        WHERE id = $1
+        RETURNING * ;`,
+        [userId]
+    );
+
+    console.log(`DATABASE: User with id ${rows[0].id} is updated (is_member: TRUE)`);
+};
+
+module.exports = { 
+    addUser,
+    assignMembershipToUser
+};
