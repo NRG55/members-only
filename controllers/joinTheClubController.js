@@ -1,4 +1,4 @@
-const { assignMembershipToUser } = require('../db/queries');
+const { assignMembership } = require('../db/queries');
 const { validateJoinTheClub } = require('../middlewares/validators/validateJoinTheClub');
 const { validationResult } = require('express-validator');
 
@@ -16,7 +16,7 @@ const joinTheClubPost = [
         };        
 
         try {            
-            await assignMembershipToUser(1);
+            await assignMembership(1);
             res.redirect('/');
 
         } catch (error) {

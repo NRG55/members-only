@@ -11,7 +11,7 @@ const addUser = async (firstName, lastName, username, password) => {
     console.log(`DATABASE: User ${rows[0].username} added`);
 };
 
-const assignMembershipToUser = async (userId) => {    
+const assignMembership = async (userId) => {    
     const { rows } = await pool.query(`
         UPDATE users
         SET is_member = TRUE
@@ -23,7 +23,29 @@ const assignMembershipToUser = async (userId) => {
     console.log(`DATABASE: User with id ${rows[0].id} is updated (is_member: TRUE)`);
 };
 
+const getUserByUsername = async (username) => {    
+    const { rows } = await pool.query(`
+        SELECT * FROM users        
+        WHERE username = $1;`,
+        [username]
+    );
+    
+    return rows[0];
+};
+
+const getUserById = async (id) => {    
+    const { rows } = await pool.query(`
+        SELECT * FROM users        
+        WHERE id = $1;`,
+        [id]
+    );
+       
+    return rows[0];
+};
+
 module.exports = { 
     addUser,
-    assignMembershipToUser
+    assignMembership,
+    getUserByUsername,
+    getUserById
 };

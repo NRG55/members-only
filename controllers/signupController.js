@@ -1,14 +1,14 @@
 const { addUser } = require('../db/queries');
 const bcrypt = require('bcryptjs');
-const { validateSignUp } = require('../middlewares/validators/validateSignUp');
+const { validateSignup } = require('../middlewares/validators/validateSignup');
 const { validationResult, matchedData } = require('express-validator');
 
-const signUpGet = (req, res) => {
+const signupGet = (req, res) => {
     res.render('forms/sign_up', { data: {} });
 };
 
-const signUpPost = [
-    validateSignUp,
+const signupPost = [
+    validateSignup,
     async (req, res, next) => {           
         const errors = validationResult(req);
         
@@ -37,4 +37,4 @@ const signUpPost = [
     }
 ];
 
-module.exports = { signUpGet, signUpPost };
+module.exports = { signupGet, signupPost };

@@ -4,7 +4,7 @@ const emptyError = 'cannot be empty.';
 const lengthError = 'must be between 1 and 32 characters.';
 const passwordLengthError = 'must be between 5 and 16 characters.';
 
-exports.validateSignUp = [
+exports.validateSignup = [
     body('firstName')
         .trim()
         .notEmpty().withMessage(`First name ${emptyError}`)

@@ -9,6 +9,6 @@ module.exports = () => expressSession({
     store: sessionStore, // default tableName: "session"
     secret: process.env.COOKIE_SECRET,
     resave: false,
-    saveUninitialized: true, // TODO: set to FALSE after testing
+    saveUninitialized: false,
     cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
 });

@@ -2,9 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const path = require('node:path');
 const setSessionConfig = require('./config/session');
+const passport = require('./config/passport');
+const addCurrentUserToLocals = require('./middlewares/addCurrentUserToLocals');
 const indexRouter = require('./routes/indexRouter');
-const signUpRouter = require('./routes/signUpRouter');
+const signupRouter = require('./routes/signupRouter');
+const loginRouter = require('./routes/loginRouter');
 const joinTheClubRouter = require('./routes/joinTheClubRouter');
+const logoutRouter = require('./routes/logoutRouter');
 
 const app = express();
 
@@ -13,12 +17,16 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
-// TODO: set (saveUninitialized: false;) in the session config after testing
+
 app.use(setSessionConfig());
+app.use(passport.session());
+app.use(addCurrentUserToLocals);
 
 app.use('/', indexRouter);
-app.use('/sign-up', signUpRouter);
+app.use('/sign-up', signupRouter);
+app.use('/log-in', loginRouter);
 app.use('/join', joinTheClubRouter);
+app.use('/log-out', logoutRouter);
 
 const PORT = process.env.PORT || 3000;
 

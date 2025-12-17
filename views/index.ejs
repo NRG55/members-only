@@ -6,10 +6,15 @@
     <title>Home</title>
 </head>
 <body>
-    <main>
-        <h1>Home page</h1>
-        <a href="/sign-up">Create account</a>
-        <a href="/join">Join the club</a>
+    <main>        
+        <% if (currentUser) { %>
+            <p>Hello, <%= currentUser.username %></p>
+            <a href="/join">Join the club</a>
+            <a href="/log-out">Log out</a>
+        <% } else { %>       
+            <a href="/sign-up">Create account</a>
+            <a href="/log-in">Log in</a>            
+        <% } %>        
     </main>    
 </body>
 </html>
