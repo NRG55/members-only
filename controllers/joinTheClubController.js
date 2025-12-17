@@ -16,7 +16,7 @@ const joinTheClubPost = [
         };        
 
         try {            
-            await assignMembership(1);
+            await assignMembership(req.user.id);
             res.redirect('/');
 
         } catch (error) {

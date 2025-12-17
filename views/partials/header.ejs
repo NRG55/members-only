@@ -1,0 +1,26 @@
+<header>
+    <div>
+        <h1>Members<span>Only</span></h1>
+    </div>
+    <% if (!currentUser) { %>
+        <div>
+            <a href="/log-in">Log in</a>
+            <a href="/sign-up">Sign up</a>
+        </div>
+    <% } else { %>    
+        <div>
+            <% if (!currentUser.is_member) { %>
+                <a href="/join">Membership</a>
+            <% } %>           
+        </div>   
+        <div>
+            <div>
+                <p><%= currentUser.username %></p>              
+                <% if (currentUser.is_member) { %>
+                    <span>&#x265b;</span>
+                <% } %>              
+            </div>            
+            <a href="/log-out">Log out</a>
+        </div>
+    <% } %>
+</header>

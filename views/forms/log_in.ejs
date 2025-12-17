@@ -6,6 +6,7 @@
     <title>Login</title>
 </head>
 <body>
+    <%- include("../partials/header") %> 
     <main>
         <%- include('../partials/validationErrors') %>
         <form action="/log-in" method="POST">            
@@ -32,6 +33,7 @@
             <button type="submit">Log in</button>
             <a href="/">Cancel</a>
         </form>
-    </main>    
+    </main>
+    <%- include("../partials/footer") %>     
 </body>
 </html>

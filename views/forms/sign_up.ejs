@@ -6,6 +6,7 @@
     <title>Sign up</title>
 </head>
 <body>
+    <%- include("../partials/header") %>    
     <main>
         <%- include('../partials/validationErrors') %>
         <form action="/sign-up" method="POST">
@@ -63,5 +64,6 @@
             <a href="/">Cancel</a>
         </form>
     </main>    
+    <%- include("../partials/footer") %>     
 </body>
 </html>

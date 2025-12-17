@@ -6,6 +6,7 @@
     <title>Membership</title>
 </head>
 <body>
+    <%- include("../partials/header") %> 
     <main>
         <%- include('../partials/validationErrors') %>
         <form action="/join" method="POST">           
@@ -19,6 +20,7 @@
             <button type="submit">Join</button>
             <a href="/">Cancel</a>
         </form>
-    </main>    
+    </main>
+    <%- include("../partials/footer") %>     
 </body>
 </html>
