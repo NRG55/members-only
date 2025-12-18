@@ -1,4 +1,5 @@
 const { body } = require('express-validator');
+const { getUserByUsername } = require('../../db/queries')
 
 const emptyError = 'cannot be empty.';
 const lengthError = 'must be between 1 and 32 characters.';
@@ -16,7 +17,14 @@ exports.validateSignup = [
     body('username')
         .trim()
         .notEmpty().withMessage(`Username ${emptyError}`)
-        .isLength({ min: 1, max: 32 }).withMessage(`Last name ${lengthError}`),
+        .isLength({ min: 1, max: 32 }).withMessage(`Last name ${lengthError}`)
+        .custom(async (value) => {         
+                    const user = await getUserByUsername(value);
+
+                    if (user) {
+                        throw new Error();
+                    };                         
+                }).withMessage('User already exists.'),
     body('password')
         .trim()
         .notEmpty().withMessage(`Password ${emptyError}`)
@@ -27,5 +35,5 @@ exports.validateSignup = [
         .isLength({ min: 5, max: 16 }).withMessage(`Password ${passwordLengthError}`)
         .custom((value, { req }) => {
                     return value === req.body.password;          
-                }).withMessage('Passwords do not match'),
+                }).withMessage('Passwords do not match.'),
 ];

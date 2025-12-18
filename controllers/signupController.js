@@ -1,4 +1,4 @@
-const { addUser } = require('../db/queries');
+const { addUser, getUserByUsername } = require('../db/queries');
 const bcrypt = require('bcryptjs');
 const { validateSignup } = require('../middlewares/validators/validateSignup');
 const { validationResult, matchedData } = require('express-validator');
@@ -15,10 +15,10 @@ const signupPost = [
         if (!errors.isEmpty()) {
             return res
                 .status(400)
-                .render('forms/sign_up', 
-                    {
-                        errors: errors.array(),
-                        data: req.body
+                .render('forms/sign_up',
+                    { 
+                        errors: errors.array(), 
+                        data: req.body 
                     }
                 );
         };        
@@ -28,8 +28,17 @@ const signupPost = [
         try {
             const hashedPassword = await bcrypt.hash(password, 10);
 
-            await addUser(firstName, lastName, username, hashedPassword);
-            res.redirect('/');
+            await addUser(firstName, lastName, username, hashedPassword);          
+            // auto login after registration
+            const user = await getUserByUsername(username);
+
+            req.login(user, (error) => {
+                if (error) {
+                    return next(error);
+                };
+
+                res.redirect('/');               
+            });          
 
         } catch (error) {
             next(error);
