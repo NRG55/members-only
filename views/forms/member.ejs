@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     <title>Membership</title>
 </head>
 <body>
     <%- include("../partials/header") %> 
-    <main>
+    <main class="main">
         <%- include('../partials/validationErrors') %>
         <form action="/join" method="POST">           
             <label for="passcode">Passcode</label>

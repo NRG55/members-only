@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     <title>Home</title>
 </head>
 <body>
     <%- include("partials/header") %>
-    <main>        
+    <main class="main">
+        <% if (!currentUser) { %>
+            <h2>Log in to post a message</h2>
+        <% } else { %>
+            <div class="button-container">
+                <a href="/post"><button class="create-message-button">Create a new message</button></a>
+            </div>
+        <% } %>
     </main>
     <%- include("partials/footer") %>    
 </body>
