@@ -9,7 +9,8 @@ const signupRouter = require('./routes/signupRouter');
 const loginRouter = require('./routes/loginRouter');
 const joinTheClubRouter = require('./routes/joinTheClubRouter');
 const logoutRouter = require('./routes/logoutRouter');
-const createMessageRouter = require('./routes/createMessageRouter');
+const messageRouter = require('./routes/messageRouter');
+const adminRouter = require('./routes/adminRouter');
 
 const app = express();
 
@@ -28,7 +29,8 @@ app.use('/sign-up', signupRouter);
 app.use('/log-in', loginRouter);
 app.use('/join', joinTheClubRouter);
 app.use('/log-out', logoutRouter);
-app.use('/post', createMessageRouter);
+app.use('/message', messageRouter);
+app.use('/admin', adminRouter);
 
 const PORT = process.env.PORT || 3000;
 

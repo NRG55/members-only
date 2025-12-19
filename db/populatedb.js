@@ -8,7 +8,8 @@ const createUsersTable = `
         last_name VARCHAR (32),
         username VARCHAR (32),
         password VARCHAR (64),
-        is_member BOOLEAN DEFAULT false    
+        is_member BOOLEAN DEFAULT false,
+        is_admin BOOLEAN DEFAULT false    
     );
 `;
 

@@ -13,15 +13,21 @@
         <div>
             <% if (!currentUser.is_member) { %>
                 <a href="/join">Membership</a>
+            <% } %>
+            <% if (!currentUser.is_admin) { %>
+                <a href="/admin">Admin</a>
             <% } %>           
         </div>   
         <div>
-            <div>                             
+            <button>                             
                 <% if (currentUser.is_member) { %>
                     <span>&#x265b;</span>
-                <% } %>
-                <p><%= currentUser.username %></p>               
-            </div>            
+                <% } %>               
+                <%= currentUser.username %>
+                <% if (currentUser.is_admin) { %>
+                    <span>&#9874;</span>
+                <% } %>               
+            </button>            
             <a href="/log-out">Log out</a>
         </div>
     <% } %>

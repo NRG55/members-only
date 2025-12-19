@@ -9,7 +9,12 @@
                 <p>From: <%= element.username ? element.username : 'Anonymous member' %></p>
                 <% if (element.created_at) { %>
                     <p><%= element.created_at %></p>
-                <% } %>            
+                <% } %> 
+                <% if (currentUser && currentUser.is_admin) { %>
+                    <form action="/message/delete/<%= element.id %>" method="GET">
+                        <button type="submit" class="delete-message-button">Delete</button>
+                    </form>
+                <% } %>           
             </div>
         </div>
     <% }) %>

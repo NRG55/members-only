@@ -29,6 +29,20 @@ const assignMembership = async (userId) => {
     console.log(`DATABASE: User with id ${rows[0].id} is updated (is_member: TRUE)`);
 };
 
+const assignAdmin = async (userId) => {    
+    const { rows } = await pool.query(
+        `
+            UPDATE users
+            SET is_admin = TRUE
+            WHERE id = $1
+            RETURNING * ;
+        `,
+        [userId]
+    );
+
+    console.log(`DATABASE: User with id ${rows[0].id} is updated (is_admin: TRUE)`);
+};
+
 const getUserByUsername = async (username) => {    
     const { rows } = await pool.query(
         `
@@ -78,7 +92,6 @@ const getAllMessages = async () => {
     );
        
     return rows;
-
 };
 
 const getAllMessagesWithUsernameAndDate = async () => {
@@ -94,12 +107,26 @@ const getAllMessagesWithUsernameAndDate = async () => {
     return rows;
 };
 
+const deleteMessage = async (messageId) => {    
+    await pool.query(
+        `
+            DELETE FROM messages
+            WHERE id = $1;
+        `,
+        [messageId]
+    );
+
+    console.log(`DATABASE: Message with id ${messageId}) deleted`);
+};
+
 module.exports = { 
     addUser,
     assignMembership,
+    assignAdmin,
     getUserByUsername,
     getUserById,
     addMessage,
     getAllMessages,
     getAllMessagesWithUsernameAndDate,
+    deleteMessage
 };

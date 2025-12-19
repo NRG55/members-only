@@ -1,4 +1,4 @@
-const { addMessage } = require('../db/queries');
+const { addMessage, deleteMessage } = require('../db/queries');
 const { validateMessage } = require('../middlewares/validators/validateMessage');
 const { validationResult, matchedData } = require('express-validator');
 
@@ -34,4 +34,20 @@ const createMessagePost = [
     }
 ];
 
-module.exports = { createMessageGet, createMessagePost };
+const deleteMessageGet = async (req, res, next) => {
+    try {
+        const { messageId } = req.params;
+      
+        await deleteMessage(messageId);
+        res.redirect('/');
+
+    } catch (error) {
+        next(error);
+    };    
+};
+
+module.exports = { 
+    createMessageGet, 
+    createMessagePost,
+    deleteMessageGet 
+};
