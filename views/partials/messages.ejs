@@ -1,0 +1,16 @@
+<div class="messages-container">
+    <% messages.forEach((element) => { %>
+        <div class="message-card">
+            <div>
+                <h3><%= element.title %></h3>
+                <p><%= element.message %></p>
+            </div>
+            <div>                
+                <p>From: <%= element.username ? element.username : 'Anonymous member' %></p>
+                <% if (element.created_at) { %>
+                    <p><%= element.created_at %></p>
+                <% } %>            
+            </div>
+        </div>
+    <% }) %>
+</div>

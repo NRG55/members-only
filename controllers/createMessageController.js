@@ -1,5 +1,6 @@
+const { addMessage } = require('../db/queries');
 const { validateMessage } = require('../middlewares/validators/validateMessage');
-const { validationResult } = require('express-validator');
+const { validationResult, matchedData } = require('express-validator');
 
 const createMessageGet = (req, res) => {
     res.render('forms/message', { data: {} });
@@ -7,7 +8,7 @@ const createMessageGet = (req, res) => {
 
 const createMessagePost = [
     validateMessage,
-    (req, res, next) => {           
+    async (req, res, next) => {           
         const errors = validationResult(req);
       
         if (!errors.isEmpty()) {
@@ -19,9 +20,17 @@ const createMessagePost = [
                         data: req.body
                     }
                 );
-        };
-        
-        // TODO: finish this POST method
+        };        
+      
+        const { title, message } = matchedData(req);
+
+        try {
+            await addMessage(req.user.id, title, message);
+            res.redirect('/');
+
+        } catch (error) {
+            next(error);
+        };        
     }
 ];
 

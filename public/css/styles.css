@@ -56,14 +56,17 @@ h1, h2, h4, p {
 }
 
 .header div {
-    align-content: center;
+    align-content: center;    
 }
 
 .header button {
-    cursor: pointer;
+    cursor: pointer;      
+    font-family: inherit;
     font-size: 1rem;
-    padding: .2rem .8rem;
-    border: none;
+    line-height: 1rem; 
+    padding: .4rem .8rem;
+    border: solid 1px transparent;
+    border-radius: .2rem;
     background: transparent;
 }
 
@@ -71,10 +74,19 @@ h1, h2, h4, p {
     margin-right: .5rem;
 }
 
+.header .log-in-button:hover {
+    border: solid 1px var(--blue-color);    
+}
+
 .header .sign-up-button {    
-    border-radius: .2rem;
     color: white;
     background-color: var(--blue-color);
+}
+
+.header .sign-up-button:hover {
+    color: var(--blue-color);
+    background-color: white;
+    border: solid 1px var(--blue-color);    
 }
 
 /* ------------ MAIN ------------ */
