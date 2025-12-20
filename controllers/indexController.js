@@ -3,7 +3,7 @@ const { getAllMessages, getAllMessagesWithUsernameAndDate } = require('../db/que
 const indexGet = async (req, res, next) => {
     try {
         const messages = 
-            req.user && req.user.is_member
+            req.user && (req.user.is_member || req.user.is_admin)
             ? await getAllMessagesWithUsernameAndDate()
             : await getAllMessages();
 

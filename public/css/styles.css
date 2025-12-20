@@ -89,6 +89,43 @@ h1, h2, h4, p {
     border: solid 1px var(--blue-color);    
 }
 
+.header .username-button {
+    border: solid 1px var(--blue-color); 
+}
+
+.header .username-button:hover {
+    border: solid 1px var(--black-color);    
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: grid;
+    position: absolute;
+    right: 0;        
+    background-color: white;    
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);
+    padding: 2rem 2rem;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    cursor: pointer;
+    width: 10rem;   
+    padding: .8rem 0;
+    text-align: center;
+}
+
+.dropdown-content a:hover {
+    color: var(--blue-color);
+}
+
+.hidden {
+    display: none;
+}
+
 /* ------------ MAIN ------------ */
 
 .main {

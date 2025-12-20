@@ -11,24 +11,27 @@
         </div>
     <% } else { %>    
         <div>
-            <% if (!currentUser.is_member) { %>
-                <a href="/join">Membership</a>
-            <% } %>
-            <% if (!currentUser.is_admin) { %>
-                <a href="/admin">Admin</a>
-            <% } %>           
-        </div>   
-        <div>
-            <button>                             
-                <% if (currentUser.is_member) { %>
-                    <span>&#x265b;</span>
-                <% } %>               
-                <%= currentUser.username %>
-                <% if (currentUser.is_admin) { %>
-                    <span>&#9874;</span>
-                <% } %>               
-            </button>            
-            <a href="/log-out">Log out</a>
+            <div class="dropdown">
+                <button class="username-button">                             
+                    <% if (currentUser.is_member) { %>
+                        <span>&#x265b;</span>
+                    <% } %>               
+                    <%= currentUser.username %>
+                    <% if (currentUser.is_admin) { %>
+                        <span>&#9874;</span>
+                    <% } %>               
+                </button>            
+                <div class="dropdown-content hidden">
+                    <a href="/">Home</a>
+                    <% if (!currentUser.is_member) { %>
+                        <a href="/join">Membership</a>
+                    <% } %>
+                    <% if (!currentUser.is_admin) { %>
+                        <a href="/admin">Admin</a>
+                    <% } %>    
+                    <a href="/log-out">Log out</a>
+                </div>
+            </div>           
         </div>
     <% } %>
 </header>
