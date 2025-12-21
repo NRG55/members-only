@@ -3,7 +3,7 @@ const { getUserByUsername } = require('../../db/queries')
 
 const emptyError = 'cannot be empty.';
 const lengthError = 'must be between 1 and 32 characters.';
-const usernameLengthError = 'must be between 1 and 32 characters.';
+const usernameLengthError = 'must be between 1 and 16 characters.';
 const passwordLengthError = 'must be between 5 and 16 characters.';
 
 exports.validateSignup = [

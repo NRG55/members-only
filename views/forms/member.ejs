@@ -10,18 +10,25 @@
 <body>
     <%- include("../partials/header") %> 
     <main class="main">
-        <%- include('../partials/validationErrors') %>
-        <form action="/join" method="POST">           
-            <label for="passcode">Passcode</label>
-            <input 
-                type="password" 
-                name="passcode" 
-                id="passcode"               
-                required
-            >           
-            <button type="submit">Join</button>
-            <a href="/">Cancel</a>
-        </form>
+        <%- include("../partials/nav_links") %>     
+        <div class="form-wrapper">
+            <h1 class="form-title">Membership</h1>
+            <%- include('../partials/validationErrors') %>
+            <form action="/join" method="POST" class="form">           
+                <label for="passcode">Please enter a passcode</label>
+                <input 
+                    type="password" 
+                    name="passcode" 
+                    id="passcode"               
+                    required
+                >
+                <p class="hint">HINT: The father of the norse gods (lowercase)</p>
+                <div class="buttons-container">
+                    <a href="/"><button type="button">Cancel</button></a>
+                    <button type="submit">Join</button>
+                </div>               
+            </form>
+        </div>
     </main>
     <%- include("../partials/footer") %>     
 </body>

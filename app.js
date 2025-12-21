@@ -4,6 +4,7 @@ const path = require('node:path');
 const setSessionConfig = require('./config/session');
 const passport = require('./config/passport');
 const addCurrentUserToLocals = require('./middlewares/addCurrentUserToLocals');
+const addCurrentPathToLocals = require('./middlewares/addCurrentPathToLocals');
 const indexRouter = require('./routes/indexRouter');
 const signupRouter = require('./routes/signupRouter');
 const loginRouter = require('./routes/loginRouter');
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(setSessionConfig());
 app.use(passport.session());
 app.use(addCurrentUserToLocals);
+app.use(addCurrentPathToLocals);
 
 app.use('/', indexRouter);
 app.use('/sign-up', signupRouter);

@@ -33,14 +33,14 @@ const assignAdmin = async (userId) => {
     const { rows } = await pool.query(
         `
             UPDATE users
-            SET is_admin = TRUE
+            SET is_admin = TRUE, is_member = TRUE
             WHERE id = $1
             RETURNING * ;
         `,
         [userId]
     );
 
-    console.log(`DATABASE: User with id ${rows[0].id} is updated (is_admin: TRUE)`);
+    console.log(`DATABASE: User with id ${rows[0].id} is updated (is_admin: TRUE, is_member: TRUE)`);
 };
 
 const getUserByUsername = async (username) => {    

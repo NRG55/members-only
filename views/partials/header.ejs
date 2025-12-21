@@ -12,7 +12,11 @@
     <% } else { %>    
         <div>
             <div class="dropdown">
-                <button class="username-button">                             
+                <button class="username-button">
+                     <% if (!currentUser.is_member) { %>
+                        <span class="user-icon-span">&#9786;</span>
+                    <% } %> 
+                                                 
                     <% if (currentUser.is_member) { %>
                         <span>&#x265b;</span>
                     <% } %>               

@@ -1,0 +1,13 @@
+<nav class="nav-links">       
+    <% const listItems = [
+            {name: 'home', path: '/'},
+            {name: 'membership', path: '/join'},
+            {name: 'admin', path: '/admin'}                    
+        ];
+        listItems.forEach((item, index) => { %>            
+            <a href="<%= item.path %>" class="<%= path === item.path ? 'active' : '' %>"><%= item.name %></a>
+            <% if (index < listItems.length - 1) { %>
+                <span>|</span>
+            <% } %>            
+    <% }) %>      
+</nav>

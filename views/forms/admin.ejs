@@ -10,18 +10,24 @@
 <body>
     <%- include("../partials/header") %> 
     <main class="main">
-        <%- include('../partials/validationErrors') %>
-        <form action="/admin" method="POST">           
-            <label for="passcode">Passcode</label>
-            <input 
-                type="password" 
-                name="passcode"
-                id="passcode"               
-                required
-            >           
-            <button type="submit">Submit</button>
-            <a href="/">Cancel</a>
-        </form>
+        <%- include("../partials/nav_links") %>
+        <div class="form-wrapper">
+            <h1 class="form-title">Admin</h1>
+            <%- include('../partials/validationErrors') %>
+            <form action="/admin" method="POST" class="form">           
+                <label for="passcode">Please enter a passcode</label>
+                <input 
+                    type="password" 
+                    name="passcode"
+                    id="passcode"               
+                    required
+                >
+                <div class="buttons-container">
+                    <a href="/"><button type="button">Cancel</button></a>
+                    <button type="submit">Submit</button>
+                </div>               
+            </form>
+        </div>
     </main>
     <%- include("../partials/footer") %>     
 </body>

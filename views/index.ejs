@@ -9,12 +9,13 @@
 </head>
 <body>
     <%- include("partials/header") %>
-    <main class="main">
+    <main class="main">             
         <% if (!currentUser) { %>
-            <h2>Log in to post a message</h2>
+            <h2 class="new-user-message">Log in to post a message</h2>
         <% } else { %>
+            <%- include("partials/nav_links") %>
             <div class="button-container">
-                <a href="/message/create"><button class="create-message-button">Create a new message</button></a>
+                <a href="/message/create"><button class="create-message-button">Create a message</button></a>
             </div>                     
         <% } %>
         <%- include("partials/messages") %>  

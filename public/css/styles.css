@@ -32,11 +32,19 @@ h1, h2, h4, p {
     margin: 0;
 }
 
-/* ------------ HEADER ------------ */
-
 .header, .main, .footer {
-    padding: 0 2rem;
+    max-width: 1200px;
+    padding: 0 2rem;    
 }
+
+@media (min-width: 1200px) {
+    .header, .main, .footer {        
+        padding: 0;
+        margin: auto;    
+    }    
+}
+
+/* ------------ HEADER ------------ */
 
 .header {
     display: flex;
@@ -84,17 +92,21 @@ h1, h2, h4, p {
 }
 
 .header .sign-up-button:hover {
-    color: var(--blue-color);
-    background-color: white;
-    border: solid 1px var(--blue-color);    
+    background-color: var(--black-color);   
 }
 
 .header .username-button {
-    border: solid 1px var(--blue-color); 
+    min-width: 6rem;
+    border: solid 1px rgb(215, 214, 214); 
 }
 
 .header .username-button:hover {
-    border: solid 1px var(--black-color);    
+    border: solid 1px var(--blue-color);    
+}
+
+.header .username-button .user-icon-span {
+    font-size: 20px;
+    transform: scale(.5, 1);
 }
 
 .dropdown {
@@ -128,8 +140,21 @@ h1, h2, h4, p {
 
 /* ------------ MAIN ------------ */
 
-.main {
-    min-height: calc(100vh - 8rem);
+.main { 
+    min-height: calc(100vh - 8rem);    
+    padding-top: 2rem;
+}
+
+.new-user-message {
+    margin-bottom: 2rem;
+}
+
+.nav-links {
+    margin-bottom: 2rem;
+}
+
+.nav-links .active {
+    color: var(--blue-color);
 }
 
 .main h2 {
@@ -145,12 +170,146 @@ h1, h2, h4, p {
 .main .create-message-button {
     cursor: pointer;
     font-size: 1rem;
-    padding: .2rem .8rem;
-    border: none;
+    padding: .4rem .8rem;
+    border: solid 1px var(--blue-color);
     border-radius: .2rem;
     color: white;
     background-color: var(--blue-color);
     margin-left: auto;
+    margin-bottom: 2rem;   
+}
+
+.main .create-message-button:hover {   
+    background-color: var(--black-color);
+}
+
+/* ------------ FORMS ------------ */
+
+.form-wrapper {
+    max-width: 24rem;
+    margin: auto;
+}
+
+.form-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form label {
+    font-size: .8rem;
+    color: rgb(61, 60, 60);
+    margin-bottom: .2rem;
+}
+
+.form input,
+.form textarea {
+    font-size: 1.2rem;
+    padding: .5rem;
+    margin-bottom: 1rem;
+    border: solid 1px rgb(220, 218, 218);
+    border-radius: .2rem;   
+}
+
+.form a {
+    align-self: self-end;
+    font-size: .9rem;
+    color: var(--blue-color);
+    text-decoration: underline transparent;
+    text-underline-offset: .2rem;
+}
+
+.form a:hover {
+    text-decoration: underline;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.form button { 
+    cursor: pointer;      
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1rem; 
+    padding: .4rem .8rem;
+    border: solid 1px var(--black-color);
+    border-radius: .2rem;
+    background: transparent;
+}
+
+.form button:hover {
+    color: var(--blue-color);
+    border-color: var(--blue-color);
+}
+
+.validation-errors-list {
+    color: rgb(238, 48, 48);
+    margin-bottom: .5rem;
+}
+
+.hint {
+    font-size: .7rem;
+    color: rgb(103, 104, 103);
+}
+
+/* ------------ MESSAGES ------------ */
+
+.messages-container {
+    display: grid;    
+    gap: .5rem;
+}
+
+.message-card {
+    padding: 1rem;
+    border: solid 1px rgb(215, 214, 214);
+    border-radius: .2rem;
+    overflow: hidden;
+}
+
+.message-card .message {
+    border-bottom: solid 1px rgb(243, 240, 240);
+    padding-bottom: .5rem;
+    margin-bottom: .5rem;
+}
+
+.message-card .message h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0 0 .5rem 0;    
+}
+
+.message-card .message p {
+    font-weight: 200;
+    
+}
+
+.message-card .message h3:first-letter,
+.message-card .message p:first-letter {
+    text-transform: capitalize;   
+}
+
+.message-card .message-info p {
+    font-size: .7rem;
+    color: rgb(100, 99, 99);
+}
+
+@media (min-width: 756px) {
+    .messages-container {        
+        grid-template-columns: repeat(2, 1fr);    
+    }    
+}
+
+@media (min-width: 1000px) {
+    .messages-container {        
+        grid-template-columns: repeat(3, 1fr);    
+    }    
 }
 
 /* ------------ FOOTER ------------ */
