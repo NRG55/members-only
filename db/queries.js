@@ -97,7 +97,7 @@ const getAllMessages = async () => {
 const getAllMessagesWithUsernameAndDate = async () => {
     const { rows } = await pool.query(
         `
-            SELECT messages.id, messages.title, messages.message, messages.created_at, users.username 
+            SELECT messages.id, messages.title, messages.message, to_char(messages.created_at, 'Mon-dd-YYYY, HH24:mi:ss') AS created_at, users.username 
             FROM messages 
             JOIN users ON messages.user_id = users.id
             ORDER BY messages.created_at DESC;

@@ -34,6 +34,11 @@ app.use('/log-out', logoutRouter);
 app.use('/message', messageRouter);
 app.use('/admin', adminRouter);
 
+app.use((error, req, res, next) => {
+    console.log(error);    
+    res.status(500).render('error', { errorMessage: error.message  });
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, (error) => {

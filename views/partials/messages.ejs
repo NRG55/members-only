@@ -12,7 +12,7 @@
                 <% } %>                         
             </div>
             <% if (currentUser && currentUser.is_admin) { %>
-                <form action="/message/delete/<%= element.id %>" method="GET">
+                <form action="/message/delete/<%= element.id %>" method="GET" class="delete-message-form">
                     <button type="submit" class="delete-message-button">Delete</button>
                 </form>
             <% } %> 
