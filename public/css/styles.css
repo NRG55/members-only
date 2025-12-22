@@ -162,6 +162,15 @@ h1, h2, h4, p {
     font-weight: 500;
 }
 
+.back-home-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.back-home-link:hover {
+    color: var(--blue-color);    
+}
+
 .main .button-container {
     display: grid;
     justify-content: end;
@@ -267,10 +276,12 @@ h1, h2, h4, p {
 }
 
 .message-card {
+    display: grid;
+    grid-template-rows: 1fr auto;
     padding: 1rem;
     border: solid 1px rgb(215, 214, 214);
-    border-radius: .2rem;
-    overflow: hidden;
+    border-radius: .2rem; 
+    word-break: break-word; 
 }
 
 .message-card .message {
@@ -286,8 +297,7 @@ h1, h2, h4, p {
 }
 
 .message-card .message p {
-    font-weight: 200;
-    
+    font-weight: 200;    
 }
 
 .message-card .message h3:first-letter,
@@ -295,9 +305,37 @@ h1, h2, h4, p {
     text-transform: capitalize;   
 }
 
+.message-card .message-info {
+    display: flex;
+    justify-content: space-between;
+}
+
 .message-card .message-info p {
     font-size: .7rem;
     color: rgb(100, 99, 99);
+}
+
+.delete-message-form {
+    display: grid;
+    align-self: self-end;
+    justify-content: end;
+    height: auto;
+    margin-top: 1rem;    
+}
+
+.delete-message-button {
+    cursor: pointer;      
+    font-family: inherit;
+    font-size: .8rem;
+    line-height: .8rem; 
+    padding: .2rem .4rem;
+    border: solid 1px var(--black-color);
+    border-radius: .2rem;
+    background: transparent;    
+}
+
+.delete-message-button:hover {    
+    border-color: var(--blue-color);      
 }
 
 @media (min-width: 756px) {
